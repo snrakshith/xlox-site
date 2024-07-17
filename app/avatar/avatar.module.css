@@ -1,0 +1,144 @@
+/* :global(*),
+:global(*::before),
+:global(*::after) {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+} */
+
+
+
+.main {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2em;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-120%);
+}
+
+.imageContainer {
+  width: var(--avatar-size);
+  height: var(--avatar-size);
+  border-radius: 100%;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.imageContainer.selected {
+  border: var(--avatar-border-size) solid var(--avatar-border-colour);
+}
+
+.imageContainer img {
+  width: 100%;
+  height: 100%;
+}
+
+.avatarItems {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 2em;
+  background-color: var(--avatar-container-background-color);
+  border-radius: 10px;
+  padding: 2em;
+}
+
+.avatarItemsContainer {
+  position: absolute;
+  top: 200%;
+  visibility: hidden;
+  animation-name: fade-out;
+  animation-timing-function: ease-in;
+  animation-duration: 250ms;
+  animation-fill-mode: forwards;
+}
+
+.avatarItemsContainer.visible {
+  position: absolute;
+  visibility: visible;
+  animation-name: fade-in;
+  animation-timing-function: ease-in;
+  animation-duration: 250ms;
+  animation-fill-mode: forwards;
+}
+
+.avatarItemsContainer::before {
+  content: '';
+  width: 20px;
+  height: 20px;
+  background-color: var(--avatar-container-background-color);
+  position: absolute;
+  inset: 0;
+  left: 50%;
+  transform: translateX(-50%) translateY(-15%);
+  rotate: 45deg;
+}
+
+.popoverItem {
+  border: 3px solid red;
+}
+
+.imageContainer.loading {
+  position: relative;
+}
+
+.imageContainer.loading::before {
+  border-radius: 100%;
+  content: '';
+  inset: 0;
+  border: var(--avatar-border-size) solid var(--avatar-border-colour);
+  border-left: var(--avatar-border-size) solid transparent;
+  border-bottom: var(--avatar-border-size) solid transparent;
+  position: absolute;
+  animation-name: spinner;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-play-state: running;
+  animation-fill-mode: forwards;
+  animation-duration: 1000ms;
+}
+
+/* :global(@keyframes spinner) {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+} */
+
+/* :global(@keyframes fade-in) {
+  from {
+    transform: translateY(0%);
+    visibility: hidden;
+    opacity: 0;
+  }
+  to {
+    transform: translateY(-20%);
+    visibility: visible;
+    opacity: 1;
+  }
+}
+
+:global(@keyframes fade-out) {
+  from {
+    transform: translateY(-20%);
+    visibility: visible;
+    opacity: 1;
+  }
+  to {
+    transform: translateY(0%);
+    visibility: hidden;
+    opacity: 0;
+  }
+} */
