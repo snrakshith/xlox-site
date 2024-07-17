@@ -15,6 +15,8 @@ import Pre from "@/components/pre";
 import Step from "@/components/step";
 import Steps from "@/components/steps";
 import Search from "@/components/search";
+import AvatarApp from "@/app/avatar/page";
+import BoardApp from "@/app/test/page";
 
 type MdxFrontmatter = {
   title: string;
@@ -31,6 +33,8 @@ const components = {
   Step,
   Steps,
   Search,
+  AvatarApp,
+  BoardApp,
 };
 
 export async function getMarkdownForSlug(slug: string, dir?: string) {
